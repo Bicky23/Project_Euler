@@ -1,9 +1,22 @@
-from math import gcd
-a = [i for i in range(1,21)]   #will work for an int array of any length
-lcm = a[0]
-for i in a[1:]:
-  num = (lcm*i)
-  den = gcd(lcm, i)
-  lcm = num // den
+def is_prime(n):
+    if n % 2 == 0:
+        return False
+    else:
+        i = 3
+        while i < n:
+            if n % i == 0:
+                return False
+            i += 2
+        return True
 
-print(lcm)
+
+def nth_prime(n):
+    count = 1
+    num = 3
+    while n > count:
+        if is_prime(num):
+            count += 1
+        num += 2
+    return num - 2
+
+print(nth_prime(10001))
